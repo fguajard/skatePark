@@ -1,0 +1,71 @@
+<h1>Skate Park</h1>
+
+<div class="py-4">
+  <h2>Administración</h2>
+  <hr class="w-50" />
+
+  <table class="table w-50 m-auto">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Años de experiencia</th>
+        <th scope="col">Especialidad</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody id = "skatersTabla">
+      
+    </tbody>
+  </table>
+</div>
+
+
+<script>
+    const rellenarTabla = async () => {
+  const { data: skaters } = await axios("/api/v1/skaters");
+  skaters.forEach((skater, index) => {
+  $("#skatersTabla").append(`
+    <tr>
+        <th scope="row">${index+1}</th>
+        <td><img src="${skater.foto}" alt=""/></td>
+        <td>${skater.nombre}</td>
+        <td>${skater.anos_experiencia}</td>
+        <td>${skater.especialidad}</td>
+        ${!skater.estado ? '<td><input type="checkbox" data-check ='+skater.id+' /></td>' : '<td><input type="checkbox" checked data-check ='+skater.id+'/></td>'}
+      </tr>
+  `);
+  });
+};
+
+(async ()=>{
+  await rellenarTabla();
+  const checks = document.querySelectorAll("[data-check]")
+  checks.forEach((check)=>{
+    $(check).change( async function() {
+      const id = this.dataset.check      
+        if(this.checked) 
+        {         
+          const {data} = await axios.put(`/api/v1/skaters/${id}`, {estado : true}, {
+            headers: {
+            'token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJza2F0ZXJFeGlzdCI6eyJpZCI6NiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsIm5vbWJyZSI6Im5vbWJyZSIsInBhc3N3b3JkIjoiJDJiJDEwJGtoRnBsMmhVYVdYMHV6YzJWejFPN09na0g2ZHMzTXIzVXhWOXJ6am9YZDhpeWwuSmxUUldpIiwiYW5vc19leHBlcmllbmNpYSI6MSwiZXNwZWNpYWxpZGFkIjoiMzYwIiwiZm90byI6Ii9pbWFnZW5lcy8zYWE0MDJiZC00OS5qcGciLCJlc3RhZG8iOmZhbHNlfSwiaWF0IjoxNjI5MjY0MzU3fQ.TLwwnwBvLsturCCuAWPOYWrcyRWdu4JVDOvY1hm-UbA"
+            }
+        })            
+        }
+        else{
+          const {data} = await axios.put(`/api/v1/skaters/${id}`, {estado : false}, {
+            headers: {
+            'token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJza2F0ZXJFeGlzdCI6eyJpZCI6NiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsIm5vbWJyZSI6Im5vbWJyZSIsInBhc3N3b3JkIjoiJDJiJDEwJGtoRnBsMmhVYVdYMHV6YzJWejFPN09na0g2ZHMzTXIzVXhWOXJ6am9YZDhpeWwuSmxUUldpIiwiYW5vc19leHBlcmllbmNpYSI6MSwiZXNwZWNpYWxpZGFkIjoiMzYwIiwiZm90byI6Ii9pbWFnZW5lcy8zYWE0MDJiZC00OS5qcGciLCJlc3RhZG8iOmZhbHNlfSwiaWF0IjoxNjI5MjY0MzU3fQ.TLwwnwBvLsturCCuAWPOYWrcyRWdu4JVDOvY1hm-UbA"
+            }
+        })      
+        }
+
+  })
+  })
+})()
+
+
+
+
+</script>
