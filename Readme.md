@@ -1,4 +1,3 @@
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
@@ -19,35 +18,37 @@
   </p>
 </p>
 
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
-Proyecto Final de Desafio Latam, es una aplicacion para registrar y administrar skaters, el servidor fue diseñado usando express y se persisten los datos por medio de Sequlize y Postgres, ademas cuenta con un login para que cada usuario pueda alterar sus datos y una vista de administradoR  
 
+## About The Project
+
+Proyecto Final de Desafio Latam, es una aplicacion para registrar y administrar skaters, el servidor fue diseñado usando express y se persisten los datos por medio de Sequalize y Postgres, ademas cuenta con un login para que cada usuario pueda entrar a la plataforma a alterar sus datos y una vista de administrador
 
 ### Built With
 
-* [NodeJS]()
-* [Express]()
-* [Handlebars]()
-* [Sequalize]()
-* [PostgresSQL]()
-
+- [NodeJS]()
+- [Express]()
+- [Handlebars]()
+- [Sequalize]()
+- [PostgresSQL]()
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-
-* npm
+- npm
   ```sh
   npm install nodemon -g
   ```
-* postgres
-  
+- postgres
+
+```sh
+ Crear base de datos y tabla especificadas en el archivo database.sql ubicado en database/ddl
+```
 
 ### Installation
 
@@ -56,6 +57,7 @@ To get a local copy up and running follow these simple steps.
    git clone https://github.com/fguajard/skatePark.git
    ```
 2. Install NPM packages
+
    ```sh
    npm install
    ```
@@ -65,11 +67,9 @@ To get a local copy up and running follow these simple steps.
    npm start
    ```
 
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/fguajard/repo.svg?style=for-the-badge
 [contributors-url]: https://github.com/fguajard/skatepark/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/fguajard/repo.svg?style=for-the-badge
