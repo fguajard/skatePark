@@ -1,9 +1,15 @@
 const Sequalize = require("sequelize");
 
-module.exports = new Sequalize("skatepark", "postgres", "postgres", {
-  host: "localhost",
+const host = process.env.DATABASE_HOST || "localhost";
+const database = process.env.DATABASE_NAME || "skatepark";
+const puerto = process.env.DATABASE_PUERTO || 5432;
+const usuario = process.env.DATABASE_USUARIO || "postgres";
+const contraseña = process.env.DATABASE_CONTRASENA || "postgres";
+
+module.exports = new Sequalize(database, usuario, contraseña, {
+  host: host,
   dialect: "postgres",
-  port: 5432,
+  port: puerto,
   pool: {
     max: 5,
     min: 0,
